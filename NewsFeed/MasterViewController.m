@@ -39,7 +39,7 @@
     NSURL *url = [NSURL URLWithString:@"http://rss.lemonde.fr/c/205/f/3050/index.rss"];
     [parser parseFeedFromUrl:url];
     
-    
+    NSLog(@"%@", [parser articles]);
 }
 
 - (void)didReceiveMemoryWarning

@@ -10,4 +10,8 @@
 
 @implementation Article
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ - %@", self.title, self.link];
+}
+
 @end

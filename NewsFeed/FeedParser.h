@@ -17,6 +17,6 @@
 
 @property (strong, nonatomic) NSMutableArray *articles;
 
-- (void) parseFeedFromUrl:(NSString *)url;
+- (void) parseFeedFromUrl:(NSURL *)url;
 
 @end

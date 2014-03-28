@@ -13,6 +13,7 @@
 - (id)init {
     self = [super init];
     self.articles = [[NSMutableArray alloc] init];
+    inFeed = false;
     return self;
 }
 
@@ -32,9 +33,9 @@
     
     // did we hit a RSS item ?
     if ([elementName isEqualToString:@"item"]) {
+        NSLog(@"Item object created");
         inFeed = true;
         currentArticle = [[Article alloc] init];
-        NSLog(@"New article object created");
     }
     
 }
@@ -42,19 +43,26 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     // if we are in items feed we parse other elements
     if (inFeed) {
+        // save item
+        if ([elementName isEqualToString:@"item"]) {
+            NSLog(@"%@", currentArticle);
+            [self.articles addObject:currentArticle];
+            currentArticle = nil;
+        }
+        
         if ([elementName isEqualToString:@"title"]) {
             currentArticle.title = currentElementValue;
         }
         if ([elementName isEqualToString:@"link"]) {
             currentArticle.link = currentElementValue;
         }
-        if ([elementName isEqualToString:@"description"]) {
-            currentArticle.description = currentElementValue;
-        }
     }
+    
+    currentElementValue = nil;
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    
     if (!currentElementValue) {
         currentElementValue = [[NSMutableString alloc] initWithString:string];
     } else {
