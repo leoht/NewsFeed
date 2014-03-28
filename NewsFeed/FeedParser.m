@@ -37,6 +37,10 @@
         currentArticle = [[Article alloc] init];
     }
     
+    if ([elementName isEqualToString:@"enclosure"] && inFeed) {
+        currentArticle.image = [attributeDict objectForKey:@"url"];
+    }
+    
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {

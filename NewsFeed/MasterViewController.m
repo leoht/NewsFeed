@@ -78,6 +78,12 @@
 
     Article *article = _objects[indexPath.row];
     cell.textLabel.text = article.title;
+    
+    // image
+    NSURL *url = [NSURL URLWithString:article.image];
+    NSLog(@"%@", article.image);
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    cell.imageView.image = [UIImage imageWithData:data];
     return cell;
 }
 

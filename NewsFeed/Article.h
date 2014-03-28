@@ -12,8 +12,6 @@
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *link;
-@property (strong, nonatomic) NSString *description;
-@property (strong, nonatomic) NSString *publicationDate;
-@property (strong, nonatomic) NSString *guid;
+@property (strong, nonatomic) NSString *image;
 
 @end
