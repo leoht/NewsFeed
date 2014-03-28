@@ -22,6 +22,8 @@
 		96FC25B318E569630074BA08 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96FC259218E569630074BA08 /* UIKit.framework */; };
 		96FC25BB18E569630074BA08 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 96FC25B918E569630074BA08 /* InfoPlist.strings */; };
 		96FC25BD18E569640074BA08 /* NewsFeedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FC25BC18E569630074BA08 /* NewsFeedTests.m */; };
+		96FC25C818E56A8B0074BA08 /* FeedParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FC25C718E56A8B0074BA08 /* FeedParser.m */; };
+		96FC25CC18E56B780074BA08 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FC25CB18E56B780074BA08 /* Article.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,10 @@
 		96FC25B818E569630074BA08 /* NewsFeedTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NewsFeedTests-Info.plist"; sourceTree = "<group>"; };
 		96FC25BA18E569630074BA08 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		96FC25BC18E569630074BA08 /* NewsFeedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTests.m; sourceTree = "<group>"; };
+		96FC25C618E56A8B0074BA08 /* FeedParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedParser.h; sourceTree = "<group>"; };
+		96FC25C718E56A8B0074BA08 /* FeedParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedParser.m; sourceTree = "<group>"; };
+		96FC25CA18E56B780074BA08 /* Article.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
+		96FC25CB18E56B780074BA08 /* Article.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,7 @@
 		96FC259418E569630074BA08 /* NewsFeed */ = {
 			isa = PBXGroup;
 			children = (
+				96FC25C918E56ABC0074BA08 /* Model */,
 				96FC259D18E569630074BA08 /* AppDelegate.h */,
 				96FC259E18E569630074BA08 /* AppDelegate.m */,
 				96FC25A018E569630074BA08 /* Main.storyboard */,
@@ -124,6 +131,8 @@
 				96FC25A718E569630074BA08 /* DetailViewController.m */,
 				96FC25A918E569630074BA08 /* Images.xcassets */,
 				96FC259518E569630074BA08 /* Supporting Files */,
+				96FC25C618E56A8B0074BA08 /* FeedParser.h */,
+				96FC25C718E56A8B0074BA08 /* FeedParser.m */,
 			);
 			path = NewsFeed;
 			sourceTree = "<group>";
@@ -155,6 +164,15 @@
 				96FC25B918E569630074BA08 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		96FC25C918E56ABC0074BA08 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				96FC25CA18E56B780074BA08 /* Article.h */,
+				96FC25CB18E56B780074BA08 /* Article.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +274,10 @@
 			files = (
 				96FC259F18E569630074BA08 /* AppDelegate.m in Sources */,
 				96FC25A518E569630074BA08 /* MasterViewController.m in Sources */,
+				96FC25CC18E56B780074BA08 /* Article.m in Sources */,
 				96FC259B18E569630074BA08 /* main.m in Sources */,
 				96FC25A818E569630074BA08 /* DetailViewController.m in Sources */,
+				96FC25C818E56A8B0074BA08 /* FeedParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 
 #import "DetailViewController.h"
+#import "FeedParser.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -33,6 +34,12 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    FeedParser *parser = [[FeedParser alloc] init];
+    NSURL *url = [NSURL URLWithString:@"http://rss.lemonde.fr/c/205/f/3050/index.rss"];
+    [parser parseFeedFromUrl:url];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
