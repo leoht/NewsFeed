@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSString *articleUrl;
 @property (weak, nonatomic) IBOutlet UIWebView *articleWebview;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end

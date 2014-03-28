@@ -8,7 +8,7 @@
 
 #import "DetailViewController.h"
 
-@interface DetailViewController ()
+@interface DetailViewController () <UIWebViewDelegate>
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
 @end
@@ -44,6 +44,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // load homepage
+    [self.articleWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.lemonde.fr"]]];
+    
     [self configureView];
 }
 
@@ -57,7 +61,7 @@
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
-    barButtonItem.title = @"Articles";
+    barButtonItem.title = @"Derniers articles";
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
 }
@@ -67,6 +71,21 @@
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
+}
+
+#pragma mark - WebView delegate
+
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+    self.activityIndicator.hidden = NO;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    self.activityIndicator.hidden = YES;
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+    NSLog(@"Erreur");
+    self.activityIndicator.hidden = YES;
 }
 
 @end
