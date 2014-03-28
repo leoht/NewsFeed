@@ -10,7 +10,7 @@
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 
-@property (strong, nonatomic) id detailItem;
+@property (strong, nonatomic) NSString *articleUrl;
+@property (weak, nonatomic) IBOutlet UIWebView *articleWebview;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 @end

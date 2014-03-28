@@ -17,26 +17,26 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-        
-        // Update the view.
-        [self configureView];
-    }
-
+- (void)setArticleUrl:(NSString *)articleUrl {
+    
+    _articleUrl = articleUrl;
+    [self configureView];
+    
     if (self.masterPopoverController != nil) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
-    }        
+    }
 }
 
 - (void)configureView
 {
     // Update the user interface for the detail item.
+    
+    NSLog(@"yeah");
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+    if (self.articleUrl) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.articleUrl]];
+        [self.articleWebview loadRequest:request];
+        NSLog(@"Webview loaded");
     }
 }
 
@@ -57,7 +57,7 @@
 
 - (void)splitViewController:(UISplitViewController *)splitController willHideViewController:(UIViewController *)viewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)popoverController
 {
-    barButtonItem.title = NSLocalizedString(@"Master", @"Master");
+    barButtonItem.title = @"Articles";
     [self.navigationItem setLeftBarButtonItem:barButtonItem animated:YES];
     self.masterPopoverController = popoverController;
 }

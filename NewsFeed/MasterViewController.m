@@ -39,7 +39,12 @@
     NSURL *url = [NSURL URLWithString:@"http://rss.lemonde.fr/c/205/f/3050/index.rss"];
     [parser parseFeedFromUrl:url];
     
-    NSLog(@"%@", [parser articles]);
+    NSLog(@"Feed loaded");
+    
+    for (Article* article in parser.articles) {
+        [self insertNewObject:article];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,12 +53,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
+- (void)insertNewObject:(Article *)article
 {
     if (!_objects) {
         _objects = [[NSMutableArray alloc] init];
     }
-    [_objects insertObject:[NSDate date] atIndex:0];
+    [_objects insertObject:article atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -74,8 +79,8 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    Article *article = _objects[indexPath.row];
+    cell.textLabel.text = article.title;
     return cell;
 }
 
@@ -113,8 +118,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDate *object = _objects[indexPath.row];
-    self.detailViewController.detailItem = object;
+    Article *article = _objects[indexPath.row];
+    self.detailViewController.articleUrl = article.link;
+    self.detailViewController.navigationItem.title = article.title;
+    NSLog(@"Selected article with url : %@", article.link);
 }
 
 @end

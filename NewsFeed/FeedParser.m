@@ -33,7 +33,6 @@
     
     // did we hit a RSS item ?
     if ([elementName isEqualToString:@"item"]) {
-        NSLog(@"Item object created");
         inFeed = true;
         currentArticle = [[Article alloc] init];
     }
@@ -45,7 +44,6 @@
     if (inFeed) {
         // save item
         if ([elementName isEqualToString:@"item"]) {
-            NSLog(@"%@", currentArticle);
             [self.articles addObject:currentArticle];
             currentArticle = nil;
         }
